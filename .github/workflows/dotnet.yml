@@ -9,6 +9,9 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  PUBLISH_PATH: '.'
+    
 jobs:
   build:
 
@@ -26,3 +29,5 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Publish App
+      run: dotnet publish --configuration Release -o '${{env.PUBLISH_PATH}}/Publish'    
