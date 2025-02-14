@@ -30,7 +30,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish App
-      run: dotnet publish --configuration Release --property:PublishDir='${{env.PUBLISH_PATH}}/Publish'
+      run: dotnet publish --configuration Release -o '${{env.PUBLISH_PATH}}/Publish'
     - name: FTP Deploy App
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
